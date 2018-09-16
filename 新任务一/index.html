@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<header>2018/9/16</header>
+<meta charset="utf-8" />
+
+<body>
+
+	<style type="text/css">
+		.but{
+			height:80px;width:150px;
+		}
+	</style>
+	<button class="but">在线音乐</button><button class="but">在线音乐</button>
+	<br /><br />
+	<span>舌尖上的中国</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button id="sj">播放</button>
+	<br/>
+	<br />
+	<span>心之逆鳞</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button id="nilin">播放</button>
+	<br/>
+	<br/>
+	<audio src="music/sjsdzg.mp3" controls="controls" id="audio01">
+		
+	</audio>
+
+</body>
+<script type="text/javascript">
+	 obj0={src:"music/sjsdzg.mp3",state:false};
+	 obj1={src:"music/xznl.mp3",state:false};
+	var div0 = document.getElementById("sj");
+	var div1= document.getElementById("nilin");
+	var music=document.getElementById("audio01");
+	window.onload = function(){
+		div0.onclick=function(){
+			obj0.state=!obj0.state;
+			if(obj0.state==true)
+			{
+				music.src=obj0.src;
+				music.play();
+				obj1.state=false;
+			}
+			else{
+				music.pause();
+			}
+		}
+		div1.onclick=function(){
+			obj1.state=!obj1.state;
+			if(obj1.state==true)
+			{
+				music.src=obj1.src;
+				music.play();
+				obj0.state=false;
+			}
+			else{
+				music.pause();
+			}
+		}
+		
+	}
+</script>
