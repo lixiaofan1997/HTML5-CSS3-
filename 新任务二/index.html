@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			legend {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form>
+			<h1>请填个人信息</h1>
+			<fieldset>
+				<legend>基本信息</legend>
+				姓名 <input type="text" name="text01" / required="required" id="name"><br/> 年龄 <input type="number" name="age" />
+			</fieldset>
+			<fieldset>
+				<legend>你想在哪里收到邮件？</legend>
+				邮箱 <input type="search" name="youjian" autocomplete="on" list="emails" id="in" required="required" />
+				<datalist id="emails">
+				<option value="@qq.com">"qq.com"</option>
+				<option value="@163.com">"163.com"</option>
+				<option value="@126.com">"126.com"</option>
+				<option value="@gmail.com">"gmail.com"</option>@yahoo.com.cn
+				<option value="@yahoo.com.cn">"yahoo.com.cn"</option>
+			</datalist>
+			</fieldset>
+			<fieldset>
+				<legend>收入情况</legend>
+				月收入
+				<input type="search" name="income" autocomplete="on" list="incomes" />
+				<datalist id="incomes">
+				<option>1k+</option>
+				<option>2k+</option>
+				<option>10k+</option>
+				<option>20k+</option>
+			</datalist><br> 银行卡
+				<input type="number" name="Bankcardnumber" /> 有效期
+				<input type="date" name="date" />
+			</fieldset>
+			<fieldset>
+
+				<legend>选取提交文件</legend>
+				文件<input type="file" />
+			</fieldset>
+			<br/>
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var div1 = document.getElementById("in");
+
+			div1.onkeyup = function(e) { //onkeyup
+				//如果有@了，怎么处理
+				console.log(div1.value);
+				var regExp = /@\.?/gi;
+				if(regExp.test(div1.value) == false) {
+					var myNode = document.getElementById("emails").children;
+					var myhouzhui = ["@qq.com", "@163.com", "@126.com", "@gmail.com", "@yahoo.com.cn"];
+					for(var i = 0; i < (myNode.length); i++) {
+						var tmp = div1.value;
+						var tmp2 = myhouzhui[i];
+						tmp2 = tmp + tmp2;
+						myNode[i].value = tmp2;
+					}
+				} else {
+					var divnew;
+					divnew = div1.value.substring(0, div1.value.indexOf("@"));
+					var myNode = document.getElementById("emails").children;
+					var myhouzhui = ["@qq.com", "@163.com", "@126.com", "@gmail.com", "@yahoo.com.cn"];
+					for(var i = 0; i < (myNode.length); i++) {
+						var tmp = divnew;
+						var tmp2 = myhouzhui[i];
+						tmp2 = tmp + tmp2;
+						myNode[i].value = tmp2;
+					}
+				}
+			}
+			var reg = /^[\u4e00-\u9fa5]+$/;
+			var divname = document.getElementById("name");
+			divname.onblur = function() {
+				reg.test(divname.value);
+			}
+		}
+	</script>
+
+</html>
