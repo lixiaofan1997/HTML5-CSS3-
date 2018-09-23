@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			button {
+				position: relative;
+				height: 25px;
+				width: 25px;
+				top:9px;
+			}
+			#gray{
+				background-color:gray;
+			}
+			#mediumpurple{
+				background-color:mediumpurple;
+			}
+			#blue{
+				 background-color:blue;
+			}
+			#red{
+				background-color:red;
+			}
+			#orange{
+				background-color:orange;
+			}
+			#lawngreen{
+				background-color:lawngreen;
+			}
+			#span{
+				width: 450px;
+				background-color: white;
+			}
+			#fie{
+				width:800px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<fieldset id="fie">
+			<legend>页面换肤</legend>
+			<fieldset>
+			<button id="gray" onclick="but('gray')"></button>
+			<button id="mediumpurple" onclick="but('mediumpurple')"></button>
+			<button id="red" onclick="but('red')"></button>
+			<button id="blue" onclick="but('blue')"></button>
+			<button id="orange" onclick="but('orange')"></button>
+			<button id="lawngreen" onclick="but('lawngreen')"></button>
+			</fieldset>
+			<p id="span">LocalStorage将数据保存到客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站的时候，挂数据仍然存在。</p>
+		</fieldset>
+
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('span').style.backgroundColor=localStorage.getItem('color');
+			//console.log(document.getElementById('red').style.top);
+		}
+		function but(a) {
+			document.getElementById(a);
+			console.log(a);
+			document.getElementById('span').style.backgroundColor=a;
+			if(window.localStorage)
+			{
+				window.localStorage.setItem('color',a);
+				var arr=document.getElementsByTagName("button");
+				for(var i=0;i<arr.length;i++)
+				{
+					arr[i].style.top='9px';
+					console.log(arr.length);
+					
+				}
+				document.getElementById(a).style.top="5px";
+				console.log(document.getElementById(a).style.top);
+				
+			}
+			else{
+				alert("您的浏览器版本过低，建议更换新版浏览器");
+			}
+		}
+	</script>
+
+</html>
