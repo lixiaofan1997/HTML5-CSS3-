@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				height:300px;
+				width:300px;
+				border:dotted;
+			}
+		</style>
+	</head>
+	<body>
+		<div ondragover="allowDrag(event)" id="divpic"  ondrop="drop(event)"></div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			if(!window.FileReader){
+				alert("您的浏览器不支持FileReader");
+			}
+			else{
+				var reader=new FileReader();/**/
+			}
+		}
+		
+//		document.ondragover=function(ev){
+//			ev.preventDefault();
+//			
+//		}
+//		document.ondrop=function(ev){
+//			ev.preventDefault();
+//		}
+		function allowDrag(ev){
+			ev.preventDefault();
+		}
+		function drop(ev){
+			ev.preventDefault();
+			var dt=ev.dataTransfer;
+			var file =dt.files[0];
+			var reader=new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload=function(){
+				var img_result=document.getElementById("divpic");
+				if(img_result.getElementsByTagName('img').length==0){
+					var node=document.createElement("img");
+					img_result.appendChild(node);
+					node.src=reader.result;
+					node.style.width='300px';
+				}
+				else{}
+			}
+		}
+	</script>
+</html>
